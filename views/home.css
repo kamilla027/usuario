@@ -1,0 +1,140 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom, #121212, #1e1e2f);
+    color: #ffffff;
+    overflow: hidden;
+    height: 100vh;
+    position: relative;
+  }
+  
+  .container-home {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 2rem;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .header-home {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .logo img {
+    height: 50px;
+  }
+  
+  .logo span {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #7c4dff;
+    text-shadow: 0 0 8px #7c4dff77;
+  }
+  
+  .main-home {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .intro h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+  }
+  
+  .intro h1 span {
+    color: #7c4dff;
+    text-shadow: 0 0 10px #7c4dff88;
+  }
+  
+  .intro p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    line-height: 1.6;
+    color: #dddddd;
+  }
+  
+  .cta-buttons {
+    margin-top: 2rem;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .botao-home {
+    background-color: transparent;
+    border: 2px solid #7c4dff;
+    padding: 0.8rem 2rem;
+    color: #fff;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 12px #7c4dff33;
+  }
+  
+  .botao-home:hover {
+    background-color: #7c4dff;
+    color: #000;
+    box-shadow: 0 0 15px #7c4dff;
+    transform: scale(1.05);
+  }
+  
+  .decoracao-fumaca {
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, #7c4dff22, transparent 70%);
+    animation: fumaca 10s infinite linear;
+    z-index: 1;
+    pointer-events: none;
+  }
+  
+  @keyframes fumaca {
+    0% {
+      transform: scale(1) translate(0, 0);
+      opacity: 0.5;
+    }
+    50% {
+      transform: scale(1.2) translate(10px, -10px);
+      opacity: 0.3;
+    }
+    100% {
+      transform: scale(1) translate(0, 0);
+      opacity: 0.5;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .intro h1 {
+      font-size: 2rem;
+    }
+  
+    .intro p {
+      font-size: 1rem;
+      padding: 0 1rem;
+    }
+  
+    .botao-home {
+      padding: 0.7rem 1.5rem;
+      font-size: 1rem;
+    }
+  }
+  

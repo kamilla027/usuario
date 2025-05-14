@@ -7,16 +7,18 @@
 </head>
 <body>
   <h2>👤 Perfil do Usuário</h2>
-  <p>Nome: <span id="nome"></span></p>
-  <p>Email: <span id="email"></span></p>
-  <a href="/logout">Sair</a>
+  <form>
+    <input type="text" id="nome" disabled>
+    <input type="email" id="email" disabled>
+    <a href="/logout"><button type="button">Sair</button></a>
+  </form>
 
   <script>
     fetch('/api/usuario')
       .then(res => res.json())
       .then(data => {
-        document.getElementById('nome').textContent = data.nome;
-        document.getElementById('email').textContent = data.email;
+        document.getElementById('nome').value = data.nome;
+        document.getElementById('email').value = data.email;
       });
   </script>
 </body>
