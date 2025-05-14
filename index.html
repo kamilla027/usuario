@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bem-vindo</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 0.5em;
+    }
+
+    .btn {
+      background-color: #6c63ff;
+      color: white;
+      padding: 15px 30px;
+      margin: 10px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background-color: #5750d5;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Bem-vindo ao CodeNinja ⚔️</h1>
+  <p>Escolha uma opção abaixo para continuar:</p>
+
+  <a href="/login" class="btn">Entrar</a>
+  <a href="/cadastro" class="btn">Criar Conta</a>
+
+  <!-- SCRIPT QUE ADICIONA O BOTÃO "SAIR" SE ESTIVER LOGADO -->
+  <script>
+    fetch('/api/usuario')
+      .then(res => {
+        if (res.ok) return res.json();
+        else throw new Error('Não logado');
+      })
+      .then(data => {
+        // Oculta os botões "Entrar" e "Criar Conta"
+        document.querySelectorAll('.btn').forEach(btn => btn.style.display = 'none');
+
+        // Cria botão "Sair"
+        const logoutBtn = document.createElement('a');
+        logoutBtn.href = '/logout';
+        logoutBtn.textContent = 'Sair';
+        logoutBtn.className = 'btn';
+        logoutBtn.style.marginTop = '20px';
+
+        // Cria mensagem "Olá, Fulano"
+        const saudacao = document.createElement('p');
+        saudacao.textContent = `Olá, ${data.nome}!`;
+        saudacao.style.marginBottom = '20px';
+
+        document.body.appendChild(saudacao);
+        document.body.appendChild(logoutBtn);
+      })
+      .catch(() => {
+        // Usuário não está logado: mantém os botões padrão
+      });
+  </script>
+
+</body>
+</html>

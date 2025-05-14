@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Meu Perfil</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>👤 Perfil do Usuário</h2>
+  <p>Nome: <span id="nome"></span></p>
+  <p>Email: <span id="email"></span></p>
+  <a href="/logout">Sair</a>
+
+  <script>
+    fetch('/api/usuario')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('nome').textContent = data.nome;
+        document.getElementById('email').textContent = data.email;
+      });
+  </script>
+</body>
+</html>
